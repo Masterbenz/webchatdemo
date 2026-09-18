@@ -1,0 +1,314 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   Header
+========================= */
+
+.header {
+    height: 64px;
+    background: #111827;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.status {
+    font-size: 13px;
+    color: #a7f3d0;
+}
+
+/* =========================
+   Main Layout
+========================= */
+
+.body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    min-height: 0;
+}
+
+/* =========================
+   Sidebar
+========================= */
+
+.sidebar {
+    background: #fff;
+    border-right: 1px solid #e5e7eb;
+    overflow: auto;
+}
+
+.sidebar-title {
+    padding: 18px;
+    font-weight: 700;
+}
+
+.user {
+    width: 100%;
+    border: 0;
+    background: #fff;
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f1f3;
+}
+
+.user:hover,
+.user.active {
+    background: #f0fdf4;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #d1d5db;
+    object-fit: cover;
+    flex: none;
+}
+
+.user-info {
+    min-width: 0;
+    align-self: center;
+}
+
+.user-name {
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-last {
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =========================
+   Chat
+========================= */
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.chat-head {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 14px 20px;
+}
+
+.chat-head strong {
+    display: block;
+}
+
+.chat-head small {
+    color: #6b7280;
+}
+
+/* =========================
+   Messages
+========================= */
+
+.messages {
+    flex: 1;
+    overflow: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.empty {
+    margin: auto;
+    color: #6b7280;
+    text-align: center;
+}
+
+/* Message row */
+
+.bubble-row {
+    display: flex;
+    width: 100%;
+}
+
+.bubble-row.out {
+    justify-content: flex-end;
+}
+
+/* =========================
+   Chat Bubble
+========================= */
+
+.bubble {
+    /*
+     * Bubble จะขนาดตาม Text
+     * แต่ไม่เกิน 1000px
+     */
+    width: fit-content;
+    max-width: 1000px;
+
+    padding: 14px 20px;
+
+    border-radius: 18px;
+
+    line-height: 1.6;
+    font-size: 18px;
+
+    /*
+     * รองรับข้อความหลายบรรทัด
+     */
+    white-space: pre-wrap;
+
+    /*
+     * ถ้าข้อความยาวมาก
+     * ให้ตัดคำและขึ้นบรรทัดใหม่
+     */
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* LINE User -> Web Chat */
+
+.bubble.in {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+}
+
+/* Web Chat -> LINE User */
+
+.bubble.out {
+    background: #dcfce7;
+}
+
+/* =========================
+   Message Meta
+========================= */
+
+.meta {
+    font-size: 10px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* =========================
+   Composer
+========================= */
+
+.composer {
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+    padding: 14px;
+    display: flex;
+    gap: 10px;
+}
+
+.composer input {
+    flex: 1;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 12px;
+    outline: 0;
+}
+
+.send {
+    border: 0;
+    border-radius: 10px;
+    background: #16a34a;
+    color: #fff;
+    padding: 0 22px;
+    font-weight: 700;
+}
+
+.send:disabled {
+    opacity: 0.5;
+}
+
+/* =========================
+   Notice
+========================= */
+
+.notice {
+    padding: 10px 16px;
+    background: #fff7ed;
+    color: #9a3412;
+    border-bottom: 1px solid #fed7aa;
+    font-size: 13px;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 700px) {
+    .body {
+        grid-template-columns: 100px 1fr;
+    }
+
+    .user {
+        justify-content: center;
+        padding: 12px 4px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .sidebar-title {
+        text-align: center;
+        font-size: 11px;
+    }
+
+    .messages {
+        padding: 16px;
+    }
+
+    .bubble {
+        /*
+         * มือถือให้กว้างได้เกือบเต็มพื้นที่
+         */
+        max-width: 92%;
+        padding: 12px 16px;
+        font-size: 17px;
+    }
+}
