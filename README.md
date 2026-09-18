@@ -1,4 +1,4 @@
-# LINE OA Web Chat — No Database
+# LINE OA Web Chat — Redis Database
 
 โปรเจกต์ Demo สำหรับ Requirement:
 
@@ -14,9 +14,9 @@ LINE User → LINE OA → LINE Webhook → Next.js → Web Chat
 
 Web Chat → Next.js → LINE Push Message API → LINE User
 
-## Important: ไม่มี Database
+## Important: Redis Database
 
- Vercel เป็น serverless environment ดังนั้นข้อมูลอาจหายเมื่อ instance ถูก recycle หรือมีการ deploy ใหม่ 
+ ใช้ Redis เก็บข้อมูลประวัติการแชท
 
 ## Setup
 
